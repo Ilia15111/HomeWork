@@ -1,3 +1,7 @@
+print("Ляшенко Илья Денисович")
+print("090304-РПИа-o23")
+
+
 def extended_gcd(a, b):
     if b == 0:
         return a, 1, 0
