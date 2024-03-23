@@ -1,18 +1,21 @@
-print("Ляшенко Илья Денисович")
-print("090304-РПИа-о23")
+def extended_gcd(a, b):
+    if b == 0:
+        return a, 1, 0
+    else:
+        d, x, y = extended_gcd(b, a % b)
+        return d, y, x - (a // b) * y
 
-a = int(input("Введите число a: "))
-n = int(input("Введите число n: "))
+def find_inverse_element(a, n):
+    d, x, y = extended_gcd(a, n)
+    if d == 1:
+        return x % n
+    else:
+        return None
 
-def mod(a,b,n):
-    r = a*b
-    while (r>n):
-        r-=n
-    return r 
-    
-b = 0
-r = mod(a,b,n)
-while(r != 1):
-    b+=1
-    r = mod(a,b,n)
-print(f"Значение b = {b}")
+a = int(input("Число а: "))
+n = int(input("Число n: "))
+inverse_element = find_inverse_element(a, n)
+if inverse_element is not None:
+    print(inverse_element)
+else:
+    print(f"Обратного элемента к числу {a} по модулю {n} не существует")
